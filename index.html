@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <title>
+       
+    </title>
+    <link rel="icon" type="image/png" href="https://codehs.com/uploads/f111a37947de2cea81db858094c04f2d">
+    <link rel="stylesheet" href="global.min.css">
+    <style>
+      form {
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        padding: 8px;
+        width: 300px;
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 8px 12px;
+        background: #7289da;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        background-color: black;
+        width: 75vw;
+        overflow-wrap: anywhere;
+        margin-left: 12.5vw;
+        padding: 10px;
+        border-radius: 25px;
+        color: white;
+        border: 1px solid white;
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        border: 1px solid white;
+      }
+      .content {
+        flex: 1;
+      }
+      .timestamp {
+        font-size: 0.75em;
+        color: white;
+        margin-top: 4px;
+      }
+      .message-img {
+        max-width: 100%;
+        border-radius: 5px;
+        margin-top: 8px;
+      }
+      #fileLabel {
+        color: white;
+        margin-top: 5px;
+        font-style: italic;
+        min-height: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1 class="tptxt">
+        Calculator
+      </h1>
+      <select id="channelSelector" class="button">
+        <option value="1394823175292063910">
+          General
+        </option>
+      </select>
+      <form id="sendForm" enctype="multipart/form-data">
+        <input class="button" type="text" id="nameInput" placeholder="Your name" required />
+        <br>
+        <input class="button" type="text" id="msgInput" placeholder="Type your message..." required />
+        <br>
+        <label for="imageInput" class="custom-file-upload">
+          Choose a file
+        </label>
+        <input style="display:none;" type="file" id="imageInput" />
+        <br>
+        <div id="fileLabel">
+        </div>
+        <button class="button" type="submit">
+          Send
+        </button>
+      </form>
+    </center>
+    <ul id="messages"></ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script src="messages.js">
+    </script>
+    <script src="files.js">
+    </script>
+  </body>
+</html>
