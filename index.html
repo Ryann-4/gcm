@@ -1,110 +1,72 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>
-       
+      Calculator
     </title>
     <link rel="icon" type="image/png" href="https://codehs.com/uploads/f111a37947de2cea81db858094c04f2d">
-    <link rel="stylesheet" href="global.min.css">
     <style>
-      form {
-        margin-bottom: 20px;
+      body {
+        font-family: sans-serif;
+        background: #1e1e1e;
+        color: white;
       }
-      input[type="text"] {
+      .hidden {
+        display: none;
+      }
+      .login {
+        margin-top: 20vh;
+        text-align: center;
+      }
+      input {
         padding: 8px;
-        width: 300px;
-        margin-bottom: 10px;
+        margin: 8px;
+        width: 240px;
       }
       button {
-        padding: 8px 12px;
+        padding: 8px 16px;
         background: #7289da;
         color: white;
         border: none;
         cursor: pointer;
       }
-      ul {
-        list-style: none;
-        padding: 0;
-      }
-      li {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 15px;
-        background-color: black;
-        width: 75vw;
-        overflow-wrap: anywhere;
-        margin-left: 12.5vw;
-        padding: 10px;
-        border-radius: 25px;
-        color: white;
-        border: 1px solid white;
-      }
-      .avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-        border: 1px solid white;
-      }
-      .content {
-        flex: 1;
-      }
-      .timestamp {
-        font-size: 0.75em;
-        color: white;
-        margin-top: 4px;
-      }
-      .message-img {
-        max-width: 100%;
-        border-radius: 5px;
-        margin-top: 8px;
-      }
-      #fileLabel {
-        color: white;
-        margin-top: 5px;
-        font-style: italic;
-        min-height: 1.2em;
-      }
     </style>
   </head>
   <body>
-    <center>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h1 class="tptxt">
-        Calculator
-      </h1>
-      <select id="channelSelector" class="button">
-        <option value="1394823175292063910">
-          General
-        </option>
-      </select>
-      <form id="sendForm" enctype="multipart/form-data">
-        <input class="button" type="text" id="nameInput" placeholder="Your name" required />
-        <br>
-        <input class="button" type="text" id="msgInput" placeholder="Type your message..." required />
-        <br>
-        <label for="imageInput" class="custom-file-upload">
-          Choose a file
-        </label>
-        <input style="display:none;" type="file" id="imageInput" />
-        <br>
-        <div id="fileLabel">
-        </div>
-        <button class="button" type="submit">
-          Send
-        </button>
-      </form>
-    </center>
-    <ul id="messages"></ul>
-    <br>
-    <br>
-    <br>
-    <br>
-    <script src="messages.js">
-    </script>
-    <script src="files.js">
+    <div class="login" id="authBox">
+      <h2>Login</h2>
+      <input type="text" id="user" placeholder="Username"><br>
+      <input type="password" id="pass" placeholder="Password"><br>
+      <button onclick="unlock()">Enter</button>
+      <p id="fail" style="color:red;"></p>
+    </div>
+
+    <div id="realPage" class="hidden"></div>
+
+    <script>
+      const decoder = x => decodeURIComponent(escape(window.atob(window.atob(x))));
+
+      const u = "WVdOemFYUnBiMjRnWVdOemFYUnBiMjRn"; // "nate higgers" double encoded
+      const p = "WVdOemFYUnBiMjRnWVdOemFYUnBiMjRn"; // "nate higgers" double encoded
+
+      const content = "PGRpdiBzdHlsZT0idGV4dC1hbGlnbjpjZW50ZXI7Ij48YnI+PGJyPjxicj48YnI+PGgxIGNsYXNzPSJ0cHR4dCI+Q2FsY3VsYXRvcjwvaDE+PHNlbGVjdCBpZD0iY2hhbm5lbFNlbGVjdG9yIiBjbGFzcz0iYnV0dG9uIj48b3B0aW9uIHZhbHVlPSIxMzk0ODIzMTc1MjkyMDYzOTEwIj5HZW5lcmFsPC9vcHRpb24+PC9zZWxlY3Q+PGZvcm0gaWQ9InNlbmRGb3JtIiBlbmN0eXBlPSJtdWx0aXBhcnQvZm9ybSI+PGlucHV0IGNsYXNzPSJidXR0b24iIHR5cGU9InRleHQiIGlkPSJuYW1lSW5wdXQiIHBsYWNlaG9sZGVyPSJZb3VyIG5hbWUiIHJlcXVpcmVkIC8+PGJyPjxpbnB1dCBjbGFzcz0iYnV0dG9uIiB0eXBlPSJ0ZXh0IiBpZD0ibXNnSW5wdXQiIHBsYWNlaG9sZGVyPSJUeXBlIHlvdXIgbWVzc2FnZS4uLiIgcmVxdWlyZWQgLz48YnI+PGxhYmVsIGZvcj0iaW1hZ2VJbnB1dCIgY2xhc3M9ImN1c3RvbS1maWxlLXVwbG9hZCI+Q2hvb3NlIGEgZmlsZTwvbGFiZWw+PGlucHV0IHN0eWxlPSJkaXNwbGF5Om5vbmU7IiB0eXBlPSJmaWxlIiBpZD0iaW1hZ2VJbnB1dCIgLz48YnI+PGRpdiBpZD0iZmlsZUxhYmVsIj48L2Rpdj48YnV0dG9uIGNsYXNzPSJidXR0b24iIHR5cGU9InN1Ym1pdCI+U2VuZDwvYnV0dG9uPjwvZm9ybTwvZGl2Pjx1bCBpZD0ibWVzc2FnZXMiPjwvdWw+PHNjcmlwdCBzcmM9Im1lc3NhZ2VzLmpzIj48L3NjcmlwdD48c2NyaXB0IHNyYz0iZmlsZXMuanMiPjwvc2NyaXB0Pg==";
+
+      function unlock() {
+        const a = document.getElementById("user").value.trim();
+        const b = document.getElementById("pass").value.trim();
+        const fa = document.getElementById("fail");
+
+        if (
+          escape(window.btoa(window.btoa(a))) === escape(u) &&
+          escape(window.btoa(window.btoa(b))) === escape(p)
+        ) {
+          document.getElementById("authBox").remove();
+          document.getElementById("realPage").classList.remove("hidden");
+          document.getElementById("realPage").innerHTML = decoder(content);
+        } else {
+          fa.innerText = "Invalid credentials.";
+        }
+      }
     </script>
   </body>
 </html>
