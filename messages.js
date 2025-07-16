@@ -1,4 +1,4 @@
-const backendUrl = 'https://discord-proxy1.onrender.com';
+const backendUrl = 'https://discord-chatting.onrender.com/';
 function getSelectedChannelId() {
   return document.getElementById('channelSelector').value;
 }
