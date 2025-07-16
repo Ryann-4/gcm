@@ -1,72 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>
-      Calculator
-    </title>
-    <link rel="icon" type="image/png" href="https://codehs.com/uploads/f111a37947de2cea81db858094c04f2d">
-    <style>
-      body {
-        font-family: sans-serif;
-        background: #1e1e1e;
-        color: white;
-      }
-      .hidden {
-        display: none;
-      }
-      .login {
-        margin-top: 20vh;
-        text-align: center;
-      }
-      input {
-        padding: 8px;
-        margin: 8px;
-        width: 240px;
-      }
-      button {
-        padding: 8px 16px;
-        background: #7289da;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="login" id="authBox">
-      <h2>Login</h2>
-      <input type="text" id="user" placeholder="Username"><br>
-      <input type="password" id="pass" placeholder="Password"><br>
-      <button onclick="unlock()">Enter</button>
-      <p id="fail" style="color:red;"></p>
-    </div>
+<head>
+  <title>
+    Calculator
+  </title>
+  <link rel="icon" type="image/png" href="https://codehs.com/uploads/f111a37947de2cea81db858094c04f2d">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #1e1e1e;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+    .login {
+      margin-top: 20vh;
+      text-align: center;
+    }
+    input {
+      padding: 8px;
+      margin: 8px;
+      width: 240px;
+    }
+    button {
+      padding: 8px 16px;
+      background: #7289da;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="login" id="authBox">
+    <h2>Login</h2>
+    <input type="text" id="user" placeholder="Username"><br>
+    <input type="password" id="pass" placeholder="Password"><br>
+    <button onclick="unlock()">Enter</button>
+    <p id="fail" style="color:red;"></p>
+  </div>
 
-    <div id="realPage" class="hidden"></div>
+  <script>
+    const u = "VG1GMFpVaHBaMmRsY25NPQ=="; // nate higgers (x2)
+    const p = "VG1GMFpVaHBaMmRsY25NPQ=="; // nate higgers (x2)
+    const redir = "YUhSMGNITTZMeTl5ZVdGdWJpMDBMbWRwZEdoMVlpNXBieTlIY205MWNDMURhR0YwTFZkbFluTnBkR1V0VFdWemMyRm5hVzVuTDFObFkzSmxkQT09";
 
-    <script>
-      const decoder = x => decodeURIComponent(escape(window.atob(window.atob(x))));
+    const i = txt => decodeURIComponent(escape(window.atob(window.atob(txt))));
+    const e = txt => window.btoa(window.btoa(txt));
 
-      const u = "VG1GMFpVaHBaMmRsY25NPQ=="; // "nate higgers" double encoded
-      const p = "VG1GMFpVaHBaMmRsY25NPQ=="; // "nate higgers" double encoded
+    function unlock() {
+      const a = document.getElementById("user").value.trim();
+      const b = document.getElementById("pass").value.trim();
+      const fa = document.getElementById("fail");
 
-      const content = "UEdoMGJXdytDaUFnUEdobFlXUStDaUFnSUNBOGRHbDBiR1UrQ2lBZ0lDQWdJQ0JEWVd4amRXeGhkRzl5Q2lBZ0lDQThMM1JwZEd4bFBnb2dJQ0FnUEd4cGJtc2djbVZzUFNKcFkyOXVJaUIwZVhCbFBTSnBiV0ZuWlM5d2JtY2lJR2h5WldZOUltaDBkSEJ6T2k4dlkyOWtaV2h6TG1OdmJTOTFjR3h2WVdSekwyWXhNVEZoTXpjNU5EZGtaVEpqWldFNE1XUmlPRFU0TURrMFl6QTBaakprSWo0S0lDQWdJRHhzYVc1cklISmxiRDBpYzNSNWJHVnphR1ZsZENJZ2FISmxaajBpWjJ4dlltRnNMbTFwYmk1amMzTWlQZ29nSUNBZ1BITjBlV3hsUGdvZ0lDQWdJQ0JtYjNKdElIc0tJQ0FnSUNBZ0lDQnRZWEpuYVc0dFltOTBkRzl0T2lBeU1IQjRPd29nSUNBZ0lDQjlDaUFnSUNBZ0lHbHVjSFYwVzNSNWNHVTlJblJsZUhRaVhTQjdDaUFnSUNBZ0lDQWdjR0ZrWkdsdVp6b2dPSEI0T3dvZ0lDQWdJQ0FnSUhkcFpIUm9PaUF6TURCd2VEc0tJQ0FnSUNBZ0lDQnRZWEpuYVc0dFltOTBkRzl0T2lBeE1IQjRPd29nSUNBZ0lDQjlDaUFnSUNBZ0lHSjFkSFJ2YmlCN0NpQWdJQ0FnSUNBZ2NHRmtaR2x1WnpvZ09IQjRJREV5Y0hnN0NpQWdJQ0FnSUNBZ1ltRmphMmR5YjNWdVpEb2dJemN5T0Rsa1lUc0tJQ0FnSUNBZ0lDQmpiMnh2Y2pvZ2QyaHBkR1U3Q2lBZ0lDQWdJQ0FnWW05eVpHVnlPaUJ1YjI1bE93b2dJQ0FnSUNBZ0lHTjFjbk52Y2pvZ2NHOXBiblJsY2pzS0lDQWdJQ0FnZlFvZ0lDQWdJQ0IxYkNCN0NpQWdJQ0FnSUNBZ2JHbHpkQzF6ZEhsc1pUb2dibTl1WlRzS0lDQWdJQ0FnSUNCd1lXUmthVzVuT2lBd093b2dJQ0FnSUNCOUNpQWdJQ0FnSUd4cElIc0tJQ0FnSUNBZ0lDQmthWE53YkdGNU9pQm1iR1Y0T3dvZ0lDQWdJQ0FnSUdGc2FXZHVMV2wwWlcxek9pQm1iR1Y0TFhOMFlYSjBPd29nSUNBZ0lDQWdJRzFoY21kcGJpMWliM1IwYjIwNklERTFjSGc3Q2lBZ0lDQWdJQ0FnWW1GamEyZHliM1Z1WkMxamIyeHZjam9nWW14aFkyczdDaUFnSUNBZ0lDQWdkMmxrZEdnNklEYzFkbmM3Q2lBZ0lDQWdJQ0FnYjNabGNtWnNiM2N0ZDNKaGNEb2dZVzU1ZDJobGNtVTdDaUFnSUNBZ0lDQWdiV0Z5WjJsdUxXeGxablE2SURFeUxqVjJkenNLSUNBZ0lDQWdJQ0J3WVdSa2FXNW5PaUF4TUhCNE93b2dJQ0FnSUNBZ0lHSnZjbVJsY2kxeVlXUnBkWE02SURJMWNIZzdDaUFnSUNBZ0lDQWdZMjlzYjNJNklIZG9hWFJsT3dvZ0lDQWdJQ0FnSUdKdmNtUmxjam9nTVhCNElITnZiR2xrSUhkb2FYUmxPd29nSUNBZ0lDQjlDaUFnSUNBZ0lDNWhkbUYwWVhJZ2V3b2dJQ0FnSUNBZ0lIZHBaSFJvT2lBME1IQjRPd29nSUNBZ0lDQWdJR2hsYVdkb2REb2dOREJ3ZURzS0lDQWdJQ0FnSUNCaWIzSmtaWEl0Y21Ga2FYVnpPaUExTUNVN0NpQWdJQ0FnSUNBZ2JXRnlaMmx1TFhKcFoyaDBPaUF4TUhCNE93b2dJQ0FnSUNBZ0lHSnZjbVJsY2pvZ01YQjRJSE52Ykdsa0lIZG9hWFJsT3dvZ0lDQWdJQ0I5Q2lBZ0lDQWdJQzVqYjI1MFpXNTBJSHNLSUNBZ0lDQWdJQ0JtYkdWNE9pQXhPd29nSUNBZ0lDQjlDaUFnSUNBZ0lDNTBhVzFsYzNSaGJYQWdld29nSUNBZ0lDQWdJR1p2Ym5RdGMybDZaVG9nTUM0M05XVnRPd29nSUNBZ0lDQWdJR052Ykc5eU9pQjNhR2wwWlRzS0lDQWdJQ0FnSUNCdFlYSm5hVzR0ZEc5d09pQTBjSGc3Q2lBZ0lDQWdJSDBLSUNBZ0lDQWdMbTFsYzNOaFoyVXRhVzFuSUhzS0lDQWdJQ0FnSUNCdFlYZ3RkMmxrZEdnNklERXdNQ1U3Q2lBZ0lDQWdJQ0FnWW05eVpHVnlMWEpoWkdsMWN6b2dOWEI0T3dvZ0lDQWdJQ0FnSUcxaGNtZHBiaTEwYjNBNklEaHdlRHNLSUNBZ0lDQWdmUW9nSUNBZ0lDQWpabWxzWlV4aFltVnNJSHNLSUNBZ0lDQWdJQ0JqYjJ4dmNqb2dkMmhwZEdVN0NpQWdJQ0FnSUNBZ2JXRnlaMmx1TFhSdmNEb2dOWEI0T3dvZ0lDQWdJQ0FnSUdadmJuUXRjM1I1YkdVNklHbDBZV3hwWXpzS0lDQWdJQ0FnSUNCdGFXNHRhR1ZwWjJoME9pQXhMakpsYlRzS0lDQWdJQ0FnZlFvZ0lDQWdQQzl6ZEhsc1pUNEtJQ0E4TDJobFlXUStDaUFnUEdKdlpIaytDaUFnSUNBOFkyVnVkR1Z5UGdvZ0lDQWdJQ0E4WW5JK0NpQWdJQ0FnSUR4aWNqNEtJQ0FnSUNBZ1BHSnlQZ29nSUNBZ0lDQThZbkkrQ2lBZ0lDQWdJRHhvTVNCamJHRnpjejBpZEhCMGVIUWlQZ29nSUNBZ0lDQWdJRU5oYkdOMWJHRjBiM0lLSUNBZ0lDQWdQQzlvTVQ0S0lDQWdJQ0FnUEhObGJHVmpkQ0JwWkQwaVkyaGhibTVsYkZObGJHVmpkRzl5SWlCamJHRnpjejBpWW5WMGRHOXVJajRLSUNBZ0lDQWdJQ0E4YjNCMGFXOXVJSFpoYkhWbFBTSXhNemswT0RJek1UYzFNamt5TURZek9URXdJajRLSUNBZ0lDQWdJQ0FnSUVkbGJtVnlZV3dLSUNBZ0lDQWdJQ0E4TDI5d2RHbHZiajRLSUNBZ0lDQWdQQzl6Wld4bFkzUStDaUFnSUNBZ0lEeG1iM0p0SUdsa1BTSnpaVzVrUm05eWJTSWdaVzVqZEhsd1pUMGliWFZzZEdsd1lYSjBMMlp2Y20wdFpHRjBZU0krQ2lBZ0lDQWdJQ0FnUEdsdWNIVjBJR05zWVhOelBTSmlkWFIwYjI0aUlIUjVjR1U5SW5SbGVIUWlJR2xrUFNKdVlXMWxTVzV3ZFhRaUlIQnNZV05sYUc5c1pHVnlQU0paYjNWeUlHNWhiV1VpSUhKbGNYVnBjbVZrSUM4K0NpQWdJQ0FnSUNBZ1BHSnlQZ29nSUNBZ0lDQWdJRHhwYm5CMWRDQmpiR0Z6Y3owaVluVjBkRzl1SWlCMGVYQmxQU0owWlhoMElpQnBaRDBpYlhOblNXNXdkWFFpSUhCc1lXTmxhRzlzWkdWeVBTSlVlWEJsSUhsdmRYSWdiV1Z6YzJGblpTNHVMaUlnY21WeGRXbHlaV1FnTHo0S0lDQWdJQ0FnSUNBOFluSStDaUFnSUNBZ0lDQWdQR3hoWW1Wc0lHWnZjajBpYVcxaFoyVkpibkIxZENJZ1kyeGhjM005SW1OMWMzUnZiUzFtYVd4bExYVndiRzloWkNJK0NpQWdJQ0FnSUNBZ0lDQkRhRzl2YzJVZ1lTQm1hV3hsQ2lBZ0lDQWdJQ0FnUEM5c1lXSmxiRDRLSUNBZ0lDQWdJQ0E4YVc1d2RYUWdjM1I1YkdVOUltUnBjM0JzWVhrNmJtOXVaVHNpSUhSNWNHVTlJbVpwYkdVaUlHbGtQU0pwYldGblpVbHVjSFYwSWlBdlBnb2dJQ0FnSUNBZ0lEeGljajRLSUNBZ0lDQWdJQ0E4WkdsMklHbGtQU0ptYVd4bFRHRmlaV3dpUGdvZ0lDQWdJQ0FnSUR3dlpHbDJQZ29nSUNBZ0lDQWdJRHhpZFhSMGIyNGdZMnhoYzNNOUltSjFkSFJ2YmlJZ2RIbHdaVDBpYzNWaWJXbDBJajRLSUNBZ0lDQWdJQ0FnSUZObGJtUUtJQ0FnSUNBZ0lDQThMMkoxZEhSdmJqNEtJQ0FnSUNBZ1BDOW1iM0p0UGdvZ0lDQWdQQzlqWlc1MFpYSStDaUFnSUNBOGRXd2dhV1E5SW0xbGMzTmhaMlZ6SWo0OEwzVnNQZ29nSUNBZ1BHSnlQZ29nSUNBZ1BHSnlQZ29nSUNBZ1BHSnlQZ29nSUNBZ1BHSnlQZ29nSUNBZ1BITmpjbWx3ZENCemNtTTlJbTFsYzNOaFoyVnpMbXB6SWo0S0lDQWdJRHd2YzJOeWFYQjBQZ29nSUNBZ1BITmpjbWx3ZENCemNtTTlJbVpwYkdWekxtcHpJajRLSUNBZ0lEd3ZjMk55YVhCMFBnb2dJRHd2WW05a2VUNEtQQzlvZEcxc1BnPT0=";
-
-      function unlock() {
-        const a = document.getElementById("user").value.trim();
-        const b = document.getElementById("pass").value.trim();
-        const fa = document.getElementById("fail");
-
-        if (
-          escape(window.btoa(window.btoa(a))) === escape(u) &&
-          escape(window.btoa(window.btoa(b))) === escape(p)
-        ) {
-          document.getElementById("authBox").remove();
-          document.getElementById("realPage").classList.remove("hidden");
-          document.getElementById("realPage").innerHTML = decoder(content);
-        } else {
-          fa.innerText = "Invalid credentials.";
-        }
+      if (
+        escape(window.btoa(window.btoa(a))) === escape(u) &&
+        escape(window.btoa(window.btoa(b))) === escape(p)
+      ) {
+        window.location.href = i(redir);
+      } else {
+        fa.innerText = "Invalid credentials.";
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
