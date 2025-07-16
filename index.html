@@ -50,18 +50,20 @@
     const e = txt => window.btoa(window.btoa(txt));
 
     function unlock() {
-      const a = document.getElementById("user").value.trim();
-      const b = document.getElementById("pass").value.trim();
-      const fa = document.getElementById("fail");
+  const a = document.getElementById("user").value.trim();
+  const b = document.getElementById("pass").value.trim();
+  const fa = document.getElementById("fail");
 
-      if (
-        escape(window.btoa(window.btoa(a))) === escape(u) &&
-        escape(window.btoa(window.btoa(b))) === escape(p)
-      ) {
-        window.location.href = i(redir);
-      } else {
-        fa.innerText = "Invalid credentials.";
-      }
+  if (
+    escape(window.btoa(window.btoa(a))) === escape(u) &&
+    escape(window.btoa(window.btoa(b))) === escape(p)
+  ) {
+    localStorage.setItem("auth", "1"); // ✅ Mark login success
+    window.location.href = i(redir);
+  } else {
+    fa.innerText = "Invalid credentials.";
+  }
+}
     }
   </script>
 </body>
