@@ -46,25 +46,24 @@
     const p = "VG1GMFpVaHBaMmRsY25NPQ=="; // nate higgers (x2)
     const redir = "YUhSMGNITTZMeTl5ZVdGdWJpMDBMbWRwZEdoMVlpNXBieTlIY205MWNDMURhR0YwTFZkbFluTnBkR1V0VFdWemMyRm5hVzVuTDFObFkzSmxkQT09";
 
-    const i = txt => decodeURIComponent(escape(window.atob(window.atob(txt))));
-    const e = txt => window.btoa(window.btoa(txt));
+    const decode = txt => decodeURIComponent(escape(window.atob(window.atob(txt))));
+  const encode = txt => window.btoa(window.btoa(txt));
 
-    function unlock() {
-  const a = document.getElementById("user").value.trim();
-  const b = document.getElementById("pass").value.trim();
-  const fa = document.getElementById("fail");
+  function unlock() {
+    const inputUser = document.getElementById("user").value.trim();
+    const inputPass = document.getElementById("pass").value.trim();
+    const failMsg = document.getElementById("fail");
 
-  if (
-    escape(window.btoa(window.btoa(a))) === escape(u) &&
-    escape(window.btoa(window.btoa(b))) === escape(p)
-  ) {
-    localStorage.setItem("auth", "1"); // ✅ Mark login success
-    window.location.href = i(redir);
-  } else {
-    fa.innerText = "Invalid credentials.";
-  }
-}
+    const decodedUser = decode(u);
+    const decodedPass = decode(p);
+
+    if (inputUser === decodedUser && inputPass === decodedPass) {
+      localStorage.setItem("auth", "1"); // ✅ mark as logged in
+      window.location.href = decode(redir);
+    } else {
+      failMsg.innerText = "Invalid credentials.";
     }
-  </script>
+  }
+</script>
 </body>
 </html>
