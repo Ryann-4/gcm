@@ -55,7 +55,7 @@ async function fetchMessages() {
       li.innerHTML = `
         <img src="${avatarUrl}" class="avatar">
         <div class="content">
-          <strong>${msg.author.username}</strong>
+          <strong>${getDisplayName(msg.author.username)}</strong>
           <div>${formattedContent}</div>
           <div class="timestamp">${timestamp}</div>
         </div>`;
