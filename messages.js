@@ -1,4 +1,15 @@
 const backendUrl = 'https://discord-proxy1.onrender.com';
+function getDisplayName(username) {
+  const nameMap = {
+    "qxx.eclipse.xxp": "Trey",
+    "nitrix1181": "Ayden",
+    "hacker41": "Ryan",
+    "joshieguy3000": "Josh",
+    "ethanator0810": "Ethan",
+    "epicsauceman12_86332": "Levi"
+  };
+  return nameMap[username] || username;
+}
 function getSelectedChannelId() {
   return document.getElementById('channelSelector').value;
 }
