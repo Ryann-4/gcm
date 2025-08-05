@@ -8,7 +8,7 @@ const credentials = [
     { user: "U21WemRYTT0=", pass: "VG1GMFpVaHBaMmRsY25NPQ==" }, // Jesus
     { user: "VEdWMmFRPT0=", pass: "VG1GMFpVaHBaMmRsY25NPQ==" } // Levi
 ];
-const redirectURL = "YUhSMGNITTZMeTl5ZVdGdWJpMDBMbWRwZEdoMVlpNXBieTlIY205MWNDMURhR0YwTFZkbFluTnBkR1V0VFdWemMyRm5hVzVuTDFObFkzSmxkQT09";
+const redirectURL = "YUhSMGNITTZMeTl5ZVdGdWJpMDBMbWRwZEdoMVlpNXBieTluWTIwdlUyVmpjbVYwTG1oMGJXdz0=";
 const decode = txt => decodeURIComponent(escape(window.atob(window.atob(txt))));
 const encode = txt => window.btoa(window.btoa(txt));
 function unlock() {
