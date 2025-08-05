@@ -16,16 +16,19 @@ function unlock() {
     const inputPass = document.getElementById("pass").value.trim();
     const failMsg = document.getElementById("fail");
     let authenticated = false;
+    let loggedInUser = "";
     for (let cred of credentials) {
         const decodedUser = decode(cred.user);
         const decodedPass = decode(cred.pass);
         if (inputUser === decodedUser && inputPass === decodedPass) {
             authenticated = true;
+            loggedInUser = decodedUser;
             break;
         }
     }
     if (authenticated) {
         localStorage.setItem("auth", "1");
+        localStorage.setItem("username", loggedInUser);
         window.location.href = decode(redirectURL);
     } else {
         failMsg.innerText = "Invalid credentials.";
