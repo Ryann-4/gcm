@@ -6,7 +6,7 @@ const credentials = [
     { user: "RXRoYW4=", pass: "TmF0ZUhpZ2dlcnM=" }, // Ethan
     { user: "TWF0dGhldw==", pass: "TmF0ZUhpZ2dlcnM=" }, // Matthew
     { user: "SmVzdXM=", pass: "TmF0ZUhpZ2dlcnM=" }, // Jesus
-    { user: "TGV2aQ==", pass: "TmF0ZUhpZ2dlcnM=" }, // Levi
+    { user: "TGV2aQ==", pass: "TmF0ZUhpZ2dlcnM=" } // Levi
 ];
 const redirectURL = "YUhSMGNITTZMeTl5ZVdGdWJpMDBMbWRwZEdoMVlpNXBieTlIY205MWNDMURhR0YwTFZkbFluTnBkR1V0VFdWemMyRm5hVzVuTDFObFkzSmxkQT09";
 const decode = txt => decodeURIComponent(escape(window.atob(window.atob(txt))));
