@@ -7,7 +7,8 @@ function getDisplayName(username) {
     "joshieguy3000": "Josh",
     "ethanator0810": "Ethan",
     "epicsauceman12_86332": "Levi",
-    "ducklett01god": "Jesus"
+    "ducklett01god": "Jesus",
+    "xlilmaddmax_35525": "Matthew"
   };
   return nameMap[username] || username;
 }
