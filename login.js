@@ -1,12 +1,12 @@
 const credentials = [
-    { user: "Unlhbg==", pass: "U2Vwcm4xMjEwIQ==" }, // ryan
-    { user: "VHJleQ==", pass: "TmF0ZUhpZ2dlcnM=" }, // trey
-    { user: "QXlkZW4=", pass: "RGFkZHlOaXRyaXg2OQ==" }, // ayden
-    { user: "Sm9zaA==", pass: "TmF0ZUhpZ2dlcnM=" }, // Josh
-    { user: "RXRoYW4=", pass: "TmF0ZUhpZ2dlcnM=" }, // Ethan
-    { user: "TWF0dGhldw==", pass: "TmF0ZUhpZ2dlcnM=" }, // Matthew
-    { user: "SmVzdXM=", pass: "TmF0ZUhpZ2dlcnM=" }, // Jesus
-    { user: "TGV2aQ==", pass: "TmF0ZUhpZ2dlcnM=" } // Levi
+    { user: "VW5saGJnPT0=", pass: "VTJWd2NtNHhNakV3SVE9PQ==" }, // ryan
+    { user: "VkhKbGVRPT0=", pass: "VG1GMFpVaHBaMmRsY25NPQ==" }, // trey
+    { user: "UVhsa1pXND0=", pass: "UkdGa1pIbE9hWFJ5YVhnMk9RPT0=" }, // ayden
+    { user: "U205emFBPT0=", pass: "VG1GMFpVaHBaMmRsY25NPQ==" }, // Josh
+    { user: "UlhSb1lXND0=", pass: "VG1GMFpVaHBaMmRsY25NPQ==" }, // Ethan
+    { user: "VFdGMGRHaGxkdz09", pass: "VG1GMFpVaHBaMmRsY25NPQ==" }, // Matthew
+    { user: "U21WemRYTT0=", pass: "VG1GMFpVaHBaMmRsY25NPQ==" }, // Jesus
+    { user: "VEdWMmFRPT0=", pass: "VG1GMFpVaHBaMmRsY25NPQ==" } // Levi
 ];
 const redirectURL = "YUhSMGNITTZMeTl5ZVdGdWJpMDBMbWRwZEdoMVlpNXBieTlIY205MWNDMURhR0YwTFZkbFluTnBkR1V0VFdWemMyRm5hVzVuTDFObFkzSmxkQT09";
 const decode = txt => decodeURIComponent(escape(window.atob(window.atob(txt))));
