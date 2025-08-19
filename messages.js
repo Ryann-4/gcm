@@ -1,6 +1,6 @@
 const backendUrl = 'https://included-touched-joey.ngrok-free.app';
 const apiMessagesUrl = `${backendUrl}/api/messages`;
-const widgetUrl = 'https://discord.com/api/guilds/1002698920809463808/widget.json';
+const widgetUrl = 'https://discord.com/api/guilds/1394823174226448524/widget.json';
 let widgetData = null;
 let displayedMessageIds = new Set();
 let currentChannelId = getSelectedChannelId();
